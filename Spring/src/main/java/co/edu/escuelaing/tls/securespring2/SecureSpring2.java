@@ -1,6 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
+
 
 package co.edu.escuelaing.tls.securespring2;
 
@@ -8,10 +6,6 @@ import java.util.Collections;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-/**
- *
- * @author david.sarria-a
- */
 @SpringBootApplication
 public class SecureSpring2 {
 
