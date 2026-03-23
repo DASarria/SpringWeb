@@ -1,0 +1,10 @@
+target/
+
+# Local env files (keep .env.example versioned)
+.env
+.env.*
+!.env.example
+
+# Local secret artifacts
+*.pem
+*.p12

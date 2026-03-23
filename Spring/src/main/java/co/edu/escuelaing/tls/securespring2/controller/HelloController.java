@@ -1,5 +1,5 @@
 
-package co.edu.escuelaing.tls.securespring2;
+package co.edu.escuelaing.tls.securespring2.controller;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
