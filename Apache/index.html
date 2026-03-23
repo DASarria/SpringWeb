@@ -9,11 +9,11 @@
                 <h1>Register and Login</h1>
         </header>
         <div>
-        <h2>Resgister</h2>
-                <form>
-                        <input id="correo-registro" placeholder="email">
-                        <input id="contraseña-registro" placeholder="password">
-                        <button>Register</button>
+        <h2>Register</h2>
+                <form id="register-form">
+                        <input id="correo-registro" type="email" placeholder="email" required>
+                        <input id="password-registro" type="password" placeholder="password" required>
+                        <button type="submit">Register</button>
                 </form>
         </div>
 
@@ -21,10 +21,15 @@
 
         <div>
         <h2>Login</h2>
-                <form>
-                        <input id="correo-ingreso" placeholder="email">
-                        <input id="contraseña-ingreso" placeholder="password">
-                        <button>Login</button>
+                <form id="login-form">
+                        <input id="correo-ingreso" type="email" placeholder="email" required>
+                        <input id="password-ingreso" type="password" placeholder="password" required>
+                        <button type="submit">Login</button>
                 </form>
         </div>
+        <div>
+                <h2>API Response</h2>
+                <pre id="api-response">Esperando accion...</pre>
+        </div>
+        <script src="script.js"></script>
 </body>

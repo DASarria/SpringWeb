@@ -1,8 +1,11 @@
 package co.edu.escuelaing.tls.securespring2.controller;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +17,7 @@ import co.edu.escuelaing.tls.securespring2.service.UserService;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*")
 public class UserController {
     private UserService userService;
 
@@ -22,11 +26,17 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody User user){
+    public ResponseEntity<Map<String, String>> createUser(@RequestBody User user){
+        Map<String, String> response = new HashMap<>();
         if(userService.createUser(user)){
-            return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully");
+            response.put("mensaje", "Usuario creado correctamente");
+            response.put("correo", user.getEmail());
+            response.put("password", user.getPassword());
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("User already exists");
+            response.put("mensaje", "El usuario ya existe");
+            response.put("correo", user.getEmail());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(response);
         }
     }
 
@@ -36,11 +46,16 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody User user) {
+    public ResponseEntity<Map<String,String>> login(@RequestBody User user) {
+        Map<String,String> response = new HashMap<>();
         if (userService.login(user.getEmail(), user.getPassword())) {
-            return ResponseEntity.ok("Login successful");
+            response.put("mensaje", "Login existoso");
+            response.put("correo", user.getEmail());
+            return ResponseEntity.ok(response);
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+        response.put("mensaje", "Credenciales inválidas");
+        response.put("correo", user.getEmail());
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
     }
 
     
