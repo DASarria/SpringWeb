@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://localhost:5000";
+const API_BASE_URL = "http://arep-david-spring.duckdns.org/";
 
 const registerForm = document.getElementById("register-form");
 const loginForm = document.getElementById("login-form");
